@@ -66,9 +66,9 @@ jobs:
   # Linux
   py36_linux:
     docker:
-#      - image: circleci/python:3.6
+     - image: circleci/python:3.6
       # Temporary workaround around 3.6 image
-      - image: circleci/python@sha256:19a446501d3e0ca273ed3161eeca3780dadbc9e3f3a788c8fd2bc92f5ed9bed0
+      # - image: circleci/python@sha256:19a446501d3e0ca273ed3161eeca3780dadbc9e3f3a788c8fd2bc92f5ed9bed0
     steps:
       - checkout
       - run: sudo apt-get install -y expect
@@ -205,20 +205,20 @@ workflows:
     jobs:
       # linux
       - py36_linux
-      - py37_linux
-      - py38_linux
-      # mac
-      - py36_mac
-      - py37_mac
-      - py38_mac
-      # windows
-      - py36_win
-      - py37_win
-#      - py38_win
-      - deploy-website:
-          filters:
-            branches:
-              only: master
+#       - py37_linux
+#       - py38_linux
+#       # mac
+#       - py36_mac
+#       - py37_mac
+#       - py38_mac
+#       # windows
+#       - py36_win
+#       - py37_win
+# #      - py38_win
+#       - deploy-website:
+#           filters:
+#             branches:
+#               only: master
 
 orbs:
   win: circleci/windows@1.0.0
