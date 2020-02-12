@@ -66,7 +66,7 @@ jobs:
   # Linux
   py36_linux:
     docker:
-     - image: circleci/python:3.6
+     - image: circleci/python@sha256:5f1335f1ad01744fae0c38c6fcfd142dc5a9b1a611d314638290dd5589f4823f
       # Temporary workaround around 3.6 image
       # - image: circleci/python@sha256:19a446501d3e0ca273ed3161eeca3780dadbc9e3f3a788c8fd2bc92f5ed9bed0
     steps:
