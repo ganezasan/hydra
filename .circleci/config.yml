@@ -74,7 +74,7 @@ jobs:
       - run: sudo apt-get install -y expect
       - run: echo 'export NOX_PYTHON_VERSIONS=3.6' >> $BASH_ENV
       - run: sudo pip install nox
-      - run: nox
+      - run: nox -s coverage
 
   py37_linux:
     docker:
