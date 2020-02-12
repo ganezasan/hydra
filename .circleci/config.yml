@@ -74,6 +74,11 @@ jobs:
       - run: sudo apt-get install -y expect
       - run: echo 'export NOX_PYTHON_VERSIONS=3.6' >> $BASH_ENV
       - run: sudo pip install nox
+      - run:
+          command: |
+            pip --version
+            virtualenv --version
+            which virtualenv
       - run: nox -s coverage
 
   py37_linux:
@@ -173,7 +178,11 @@ jobs:
     steps:
       - checkout
       - run: sudo pip install nox
-      - run: nox -s coverage
+      - run:
+          command: |
+            pip --version
+            virtualenv --version
+            which virtualenv
 
   deploy-website:
     docker:
@@ -205,6 +214,7 @@ workflows:
     jobs:
       # linux
       - py36_linux
+      - coverage
 #       - py37_linux
 #       - py38_linux
 #       # mac
