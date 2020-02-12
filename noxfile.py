@@ -185,14 +185,14 @@ def coverage(session):
     session.run("pip", "install", "-e", ".", silent=SILENT)
     # Install all plugins in session
     for plugin in get_all_plugins():
-        print(plugin)
-        # session.run(
-        #     "pip",
-        #     "install",
-        #     "-e",
-        #     os.path.join("plugins", plugin["path"]),
-        #     silent=SILENT,
-        # )
+        # print(plugin)
+        session.run(
+            "pip",
+            "install",
+            "-e",
+            os.path.join("plugins", plugin["path"]),
+            silent=SILENT,
+        )
 
     session.run("coverage", "erase")
     session.run("coverage", "run", "--append", "-m", "pytest", silent=SILENT)
@@ -202,15 +202,15 @@ def coverage(session):
         if session.python not in plugin_python_versions:
             continue
 
-        # session.run(
-        #     "coverage",
-        #     "run",
-        #     "--append",
-        #     "-m",
-        #     "pytest",
-        #     os.path.join("plugins", plugin["path"]),
-        #     silent=SILENT,
-        # )
+        session.run(
+            "coverage",
+            "run",
+            "--append",
+            "-m",
+            "pytest",
+            os.path.join("plugins", plugin["path"]),
+            silent=SILENT,
+        )
 
     # Increase the fail_under as coverage improves
     session.run("coverage", "report", "--fail-under=80")
